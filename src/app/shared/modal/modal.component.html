@@ -1,0 +1,55 @@
+<div mat-dialog-content class="modal">
+  <h2 mat-dialog-title>Viajante</h2>
+  <div class="idade">
+    <ul>
+      <li><strong>Adultos</strong></li>
+      <li>(Acima de 12 anos)</li>
+      <li>
+        <button mat-icon-button class="mat-icon-button-remove">
+          <img src="assets/icones/do_not_disturb_on.png" alt="Ícone do operador de subtração">
+        </button>
+        <span>1</span>
+        <button mat-icon-button class="mat-icon-button-add">
+          <img src="assets/icones/add_circle.png" alt="Ícone do operador de adição">
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li><strong>Crianças</strong></li>
+      <li>(Entre 2 e 11 anos)</li>
+      <li>
+        <button mat-icon-button class="mat-icon-button-remove">
+          <img src="assets/icones/do_not_disturb_on.png" alt="Ícone do operador de subtração">
+        </button>
+        <span>0</span>
+        <button mat-icon-button class="mat-icon-button-add">
+          <img src="assets/icones/add_circle.png" alt="Ícone do operador de adição">
+        </button>
+      </li>
+    </ul>
+    <ul>
+      <li><strong>Bebês</strong></li>
+      <li>(Até 2 anos)</li>
+      <li>
+        <button mat-icon-button class="mat-icon-button-remove">
+          <img src="assets/icones/do_not_disturb_on.png" alt="Ícone do operador de subtração">
+        </button>
+        <span>0</span>
+        <button mat-icon-button class="mat-icon-button-add">
+          <img src="assets/icones/add_circle.png" alt="Ícone do operador de adição">
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="categoria">
+    <p><strong>Categoria</strong></p>
+    <mat-chip-listbox>
+      <mat-chip-option>Executiva</mat-chip-option>
+      <mat-chip-option>Econômica</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+  <div mat-dialog-actions class="modal-actions">
+    <button mat-flat-button color="primary" mat-dialog-close>Cancelar</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="true">Aplicar</button>
+  </div>
+</div>

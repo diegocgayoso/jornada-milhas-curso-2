@@ -1,0 +1,11 @@
+.banner {
+  display: flex;
+  img {
+    max-width: 100%;
+  }
+  @media (min-width: 1450px) {
+    img {
+      width: 100%;
+    }
+  }
+}
