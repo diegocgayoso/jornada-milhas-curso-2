@@ -1,0 +1,67 @@
+:host {
+  margin: 1rem;
+}
+.card-passagem {
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 5px rgb(121, 121, 121);
+  gap: 1rem;
+  .title-passagem {
+    font-size: 30px;
+    display: block;
+    line-height: normal;
+  }
+  mat-divider {
+    margin-bottom: 2rem;
+  }
+  .trajeto{
+    gap: 1rem;
+    .infos-trajeto {
+      flex: 1;
+    }
+  }
+  .datas {
+    gap: 1rem;
+  }
+  .detalhes-rumo {
+    flex: 1;
+  }
+  .detalhes-preco {
+    flex: 1;
+    .preco {
+      font-size: 32px;
+      padding: 1rem;
+    }
+    .pagamento {
+      .opcoes{
+        flex: 1;
+        align-self: center;
+        text-align: center;
+      }
+    }
+  }
+}
+.f-we-600 {
+  font-weight: 600;
+}
+.box-roxo{
+  background: #e8def8;
+  padding: .4rem;
+  border-radius: .4rem;
+  text-align: center;
+}
+.d-flex {
+  display: flex;
+}
+.f-sz-1{
+  font-size: 1rem;
+}
+.f-sz-2{
+  font-size: 1.2rem;
+}
+.flex-s-between{
+  justify-content: space-between;
+}
+.width100{
+  width: 100%;
+}

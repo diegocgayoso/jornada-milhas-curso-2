@@ -1,0 +1,39 @@
+.buscapage {
+  .banner-busca {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    img {
+      position: absolute;
+      bottom: -7%;
+    }
+  }
+  .container-busca {
+    display: flex;
+    gap: 2rem;
+    .aside {
+      background: #f5f5f5;
+      width: fit-content;
+      min-width: 180px;
+      border-radius: 2rem;
+      border: none;
+      padding: 2rem;
+      .title-aside {
+        font-size: 34px;
+      }
+      mat-divider {
+        margin: 1rem 0;
+      }
+    }
+    .result-busca {
+      width: 100%;
+      .cards-recomendados {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      .cards-passagens {
+      }
+    }
+  }
+}

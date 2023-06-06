@@ -1,29 +1,20 @@
 <section class="homepage">
-  <app-banner src="assets/imagens/banner-homepage.png"
-    alt="Banner da aplicação Jornada mostrando uma mulher negra de cabelos cacheados com um notebook aberto no colo e uma mochila azul ao seu lado em um fundo de céu ensolarado com vários balões coloridos">
-  </app-banner>
+  <app-banner src="assets/imagens/banner-homepage.png" alt="Banner da aplicação Jornada"></app-banner>
   <app-container>
     <app-form-busca></app-form-busca>
-    <app-titulo texto="Promoções"></app-titulo>
+    <h2>Promoções</h2>
     <div class="card-wrapper">
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
+      <div *ngFor="let item of promocoes">
+        <app-card-busca [promocao]="item"></app-card-busca>
+      </div>
     </div>
-    <app-titulo texto="Depoimentos"></app-titulo>
+    <h2>Depoimentos</h2>
     <div class="card-wrapper">
-      <app-depoimento />
-      <app-depoimento />
-      <app-depoimento />
+      <div *ngFor="let item of depoimentos">
+        <app-card-depoimento [depoimento]="item"></app-card-depoimento>
+      </div>
+
     </div>
   </app-container>
-  <app-banner src="assets/imagens/banner-homepage-rodape.png"
-    alt="Banner da aplicação Jornada mostrando um homem branco sentado em uma montanha e um fundo com céu ensolarado ">
-  </app-banner>
+  <app-banner src="assets/imagens/banner-homepage-rodape.png" alt="Banner da aplicação Jornada"></app-banner>
 </section>

@@ -1,0 +1,20 @@
+<form class="slider-preco">
+  <h4 class="title">Preço</h4>
+  <div class="label-container">
+    <label id="name-label" class="name-label">De</label>
+    <label class="example-value-label">Até</label>
+  </div>
+  <div class="label-container">
+    <label id="name-label" class="name-label">R{{ min |currency }}</label>
+    <label class="example-value-label">R{{ max | currency }}</label>
+  </div>
+  <mat-slider
+    class=""
+    [max]="max"
+    [min]="min"
+    [step]="step"
+    [discrete]="thumbLabel"
+    [showTickMarks]="showTicks">
+    <input matSliderThumb [(ngModel)]="value" name="value">
+  </mat-slider>
+</form>

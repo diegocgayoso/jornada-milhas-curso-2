@@ -1,0 +1,22 @@
+:host{
+  flex: 1 1 auto;
+}
+.card-recomendado {
+  background-color: #f5f5f5;
+  border-radius: 1.5rem;
+  padding: 1rem 2rem;
+
+  text-align: center;
+  .title-card{
+    font-size: 1rem;
+  }
+  .preco-card {
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    font-weight: 400;
+    color: rgb(85, 85, 85);
+  }
+  .tempovoo-card {
+    font-size: .8rem;
+  }
+}
