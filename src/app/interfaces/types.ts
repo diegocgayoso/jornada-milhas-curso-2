@@ -14,3 +14,10 @@ export interface Depoimentos {
   autor:  string;
   avatar: string;
 }
+
+export interface Estados {
+  id:    number;
+  nome:  string;
+  sigla: string;
+}
+

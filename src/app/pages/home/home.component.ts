@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     this.service.getPromocoes().subscribe(
       res => {
         this.promocoes = res;
-        console.log(this.promocoes);
       }
     )
   }
@@ -31,7 +30,6 @@ export class HomeComponent implements OnInit {
     this.service.getDepoimentos().subscribe(
       res => {
         this.depoimentos = res;
-        console.log(this.depoimentos);
       }
     )
   }
