@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Passageiros } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-modal',
@@ -11,9 +13,16 @@ export class ModalComponent {
   passageirosBebes: number = 0;
   categoria: string = 'economica';
 
-  // categoria
+  @Output() dadosPassageiros = new EventEmitter();
 
-  passageiros = {
+  constructor(
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Passageiros
+  ){
+
+  }
+
+  passageiros: Passageiros = {
     adultos: this.passageirosAdultos,
     criancas: this.passageirosCriancas,
     bebes: this.passageirosBebes,
@@ -33,6 +42,10 @@ export class ModalComponent {
   }
 
   mandandoDadosPassageiro() {
-    console.log(this.passageiros);
+    this.dadosPassageiros.emit(this.passageiros);
+  }
+
+  salvarDadosPassageiros(){
+    this.dialogRef.close(this.passageiros);
   }
 }
