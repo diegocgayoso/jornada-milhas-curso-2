@@ -2,12 +2,16 @@
   <form [formGroup]="buscaForm" (ngSubmit)="buscar()">
     <h2>Passagens</h2>
     <div class="flex-container">
-      <mat-button-toggle-group formControlName="somenteida" aria-label="Tipo de passagem">
-        <mat-button-toggle value="idaevolta">
-          <!-- <mat-icon>check</mat-icon> -->
+      <mat-button-toggle-group formControlName="somenteida" aria-label="Tipo de passagem"
+      #somenteIda="matButtonToggleGroup">
+        <mat-button-toggle value="idaevolta" >
+          <mat-icon *ngIf="somenteIda.value == 'idaevolta'" >check</mat-icon>
           IDA E VOLTA
         </mat-button-toggle>
-        <mat-button-toggle value="somenteida">SOMENTE IDA</mat-button-toggle>
+        <mat-button-toggle value="somenteida">
+          <mat-icon *ngIf="somenteIda.value == 'somenteida'" >check</mat-icon>
+          SOMENTE IDA
+        </mat-button-toggle>
       </mat-button-toggle-group>
       <mat-chip-listbox (click)="openDialog()" aria-label="Seleção de passagens">
         <mat-chip-option selected>1 adulto</mat-chip-option>
@@ -20,7 +24,7 @@
         <mat-icon matPrefix>
           flight_takeoff
         </mat-icon>
-        <input matInput placeholder="Origem" formControlName="origemControl" [matAutocomplete]="autoOrigem">
+        <input matInput placeholder="Origem" formControlName="origemControl" [matAutocomplete]="autoOrigem" value="estado.nome">
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete autoActiveFirstOption #autoOrigem="matAutocomplete">
           <mat-option *ngFor="let estado of estadosFiltrados | async" [value]="estado.nome">
@@ -46,13 +50,13 @@
       </mat-form-field>
       <mat-form-field class="input-container" appearance="outline">
         <mat-label>Data de ida</mat-label>
-        <input matInput [matDatepicker]="ida" formControlName="ida">
+        <input matInput [matDatepicker]="ida" formControlName="idaData">
         <mat-datepicker-toggle matIconSuffix [for]="ida"></mat-datepicker-toggle>
         <mat-datepicker #ida></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="input-container" appearance="outline">
         <mat-label>Data da volta</mat-label>
-        <input matInput [matDatepicker]="volta" formControlName="volta">
+        <input matInput [matDatepicker]="volta" formControlName="voltaData">
         <mat-datepicker-toggle matIconSuffix [for]="volta"></mat-datepicker-toggle>
         <mat-datepicker #volta></mat-datepicker>
       </mat-form-field>

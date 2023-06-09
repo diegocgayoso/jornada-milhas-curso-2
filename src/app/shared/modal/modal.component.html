@@ -6,40 +6,34 @@
         <li><strong>Adultos</strong></li>
         <li>(Acima de 12 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <contador (valorPassagiero)="quantidadeAdultos($event)"></contador>
         </li>
       </ul>
       <ul>
         <li><strong>Crianças</strong></li>
         <li>(Entre 2 e 11 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <contador (valorPassagiero)="quantidadeCriancas($event)"></contador>
         </li>
       </ul>
       <ul>
         <li><strong>Bebês</strong></li>
         <li>(Até 2 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <contador (valorPassagiero)="quantidadeBebes($event)"></contador>
         </li>
       </ul>
     </div>
     <div class="selecao-categoria">
       <p><strong>Categoria</strong></p>
-      <mat-chip-listbox aria-label="Seleção de passagens">
-        <mat-chip-option selected>1 adulto</mat-chip-option>
-        <mat-chip-option>Econômica</mat-chip-option>
+      <mat-chip-listbox aria-label="Seleção de passagens" [(ngModel)]="categoria" >
+        <mat-chip-option value="economica">Econômica</mat-chip-option>
+        <mat-chip-option value="executiva">Executiva</mat-chip-option>
       </mat-chip-listbox>
     </div>
   </div>
   <div mat-dialog-actions class="modal-actions">
-    <button color="primary" mat-flat-button mat-dialog-close>BUSCAR</button>
+    <button color="primary" mat-flat-button mat-dialog-close (click)="mandandoDadosPassageiro()">BUSCAR</button>
   </div>
 </section>
 

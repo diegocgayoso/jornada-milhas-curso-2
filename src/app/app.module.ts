@@ -38,6 +38,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ContadorComponent } from './shared/contador/contador.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CardRecomendacaoComponent,
     DepoimentoComponent,
     ParadasComponent,
-    PrecosComponent
+    PrecosComponent,
+    ContadorComponent
   ],
   imports: [
     BrowserModule,

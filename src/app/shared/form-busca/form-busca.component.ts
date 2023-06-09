@@ -29,8 +29,8 @@ export class FormBuscaComponent implements OnInit{
         somenteida: [],
         origemControl: [],
         destinoControl: [],
-        ida: [],
-        volta: []
+        idaData: [],
+        voltaData: []
       })
       this.getEstados();
       this.estadosFiltrados = this.buscaForm.get('origemControl')?.valueChanges.pipe(
@@ -58,13 +58,11 @@ export class FormBuscaComponent implements OnInit{
     this.service.buscarEstados()
       .subscribe(data => {
         this.estados = data;
-        console.log(this.estados);
       })
   }
 
   filtrarEstados(value: string): Estados[]{
     const valorFiltrado = value.toLowerCase();
-
     return this.estados.filter(
       estado => estado.nome.toLowerCase().includes(valorFiltrado)
     )
