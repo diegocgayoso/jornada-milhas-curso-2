@@ -3,13 +3,13 @@
     <h2>Passagens</h2>
     <div class="flex-container">
       <mat-button-toggle-group formControlName="somenteida" aria-label="Tipo de passagem"
-      #somenteIda="matButtonToggleGroup">
-        <mat-button-toggle value="idaevolta" >
-          <mat-icon *ngIf="somenteIda.value == 'idaevolta'" >check</mat-icon>
+        #somenteIda="matButtonToggleGroup">
+        <mat-button-toggle value="idaevolta">
+          <mat-icon *ngIf="somenteIda.value == 'idaevolta'">check</mat-icon>
           IDA E VOLTA
         </mat-button-toggle>
         <mat-button-toggle value="somenteida">
-          <mat-icon *ngIf="somenteIda.value == 'somenteida'" >check</mat-icon>
+          <mat-icon *ngIf="somenteIda.value == 'somenteida'">check</mat-icon>
           SOMENTE IDA
         </mat-button-toggle>
       </mat-button-toggle-group>
@@ -24,7 +24,7 @@
         <mat-icon matPrefix>
           flight_takeoff
         </mat-icon>
-        <input matInput placeholder="Origem" formControlName="origemControl" [matAutocomplete]="autoOrigem" value="estado.nome">
+        <input matInput placeholder="Origem" formControlName="origemControl" [matAutocomplete]="autoOrigem" value="estado.id">
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete autoActiveFirstOption #autoOrigem="matAutocomplete">
           <mat-option *ngFor="let estado of estadosFiltrados | async" [value]="estado.nome">

@@ -15,7 +15,7 @@ export interface Depoimentos {
   avatar: string;
 }
 
-export interface Estados {
+export interface Estado {
   id: number;
   nome: string;
   sigla: string;
@@ -26,4 +26,30 @@ export interface Passageiros {
   criancas: number,
   bebes: number,
   categoria: string
+}
+
+export interface Companhia {
+  id:   number;
+  nome: string;
+}
+
+export interface Resultado {
+  paginaAtual:  number;
+  ultimaPagina: number;
+  total:        number;
+  resultado:    Resultado[];
+}
+
+export interface Passagem {
+  tipo:         string;
+  precoIda:     number;
+  precoVolta:   number;
+  taxaEmbarque: number;
+  conexoes:     number;
+  tempoVoo:     number;
+  origem:       Estado;
+  destino:      Estado;
+  companhia:    Companhia;
+  dataIda:      Date;
+  dataVolta:    Date;
 }

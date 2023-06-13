@@ -6,34 +6,34 @@
         <li><strong>Adultos</strong></li>
         <li>(Acima de 12 anos)</li>
         <li>
-          <contador (valorPassagiero)="quantidadeAdultos($event)"></contador>
+          <app-botao-controle (valorPassagiero)="quantidadeAdultos($event)"></app-botao-controle>
         </li>
       </ul>
       <ul>
         <li><strong>Crianças</strong></li>
         <li>(Entre 2 e 11 anos)</li>
         <li>
-          <contador (valorPassagiero)="quantidadeCriancas($event)"></contador>
+          <app-botao-controle (valorPassagiero)="quantidadeCriancas($event)"></app-botao-controle>
         </li>
       </ul>
       <ul>
         <li><strong>Bebês</strong></li>
         <li>(Até 2 anos)</li>
         <li>
-          <contador (valorPassagiero)="quantidadeBebes($event)"></contador>
+          <app-botao-controle (valorPassagiero)="quantidadeBebes($event)"></app-botao-controle>
         </li>
       </ul>
     </div>
     <div class="selecao-categoria">
       <p><strong>Categoria</strong></p>
       <mat-chip-listbox aria-label="Seleção de passagens" [(ngModel)]="categoria" >
-        <mat-chip-option value="economica">Econômica</mat-chip-option>
-        <mat-chip-option value="executiva">Executiva</mat-chip-option>
+        <mat-chip-option value="Econômica">Econômica</mat-chip-option>
+        <mat-chip-option value="Executiva">Executiva</mat-chip-option>
       </mat-chip-listbox>
     </div>
   </div>
   <div mat-dialog-actions class="modal-actions">
-    <button color="primary" mat-flat-button mat-dialog-close (click)="salvarDadosPassageiros()" >BUSCAR</button>
+    <button color="primary" mat-flat-button mat-dialog-close (click)="salvarDadosPassageiros()">BUSCAR</button>
   </div>
 </section>
 

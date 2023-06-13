@@ -25,7 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ModalComponent } from './shared/modal/modal.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BotaoControleComponent } from './shared/botao-controle/botao-controle.component';
 import { BuscaComponent } from './pages/busca/busca.component';
 import { CardPassagemComponent } from './pages/busca/componentes/card-passagem/card-passagem.component';
@@ -37,8 +37,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { ContadorComponent } from './shared/contador/contador.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { ContadorComponent } from './shared/contador/contador.component';
     DepoimentoComponent,
     ParadasComponent,
     PrecosComponent,
-    ContadorComponent
   ],
   imports: [
     BrowserModule,
@@ -84,9 +83,9 @@ import { ContadorComponent } from './shared/contador/contador.component';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

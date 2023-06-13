@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Depoimentos, Estados, Promocoes } from 'src/app/interfaces/types';
+import { Depoimentos, Estado, Promocoes, Resultado } from 'src/app/interfaces/types';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,11 @@ export class ApiService {
     return this.http.get<Depoimentos[]>(this.api_url + 'depoimentos');
   }
 
-  buscarEstados() : Observable<Estados[]>{
-    return this.http.get<Estados[]>(this.api_url + 'estados');
+  buscarEstados() : Observable<Estado[]>{
+    return this.http.get<Estado[]>(this.api_url + 'estados');
+  }
+
+  buscarPassagens(search: HttpParams) {
+    return this.http.get<Resultado>(this.api_url + 'passagem/search', {params: search})
   }
 }

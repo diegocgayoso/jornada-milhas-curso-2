@@ -18,9 +18,7 @@ export class ModalComponent {
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Passageiros
-  ){
-
-  }
+  ){}
 
   passageiros: Passageiros = {
     adultos: this.passageirosAdultos,
