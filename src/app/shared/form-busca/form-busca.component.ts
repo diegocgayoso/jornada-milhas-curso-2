@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { Estado, Passageiros } from 'src/app/interfaces/types';
 import { Observable, map, startWith } from 'rxjs';
-import { formatDate } from '@angular/common';
-import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-form-busca',
@@ -15,44 +15,45 @@ import { HttpParams } from '@angular/common/http';
 })
 export class FormBuscaComponent implements OnInit {
 
+
   buscaForm!: FormGroup;
   estados: Estado[] = [];
   estadosFiltrados!: Observable<Estado[]> | undefined;
   estadosFiltradosDestino!: Observable<Estado[]> | undefined;
 
+
   adultos!: number;
   criancas!: number;
   bebes!: number;
   categoria!: string;
-  dadosPassageiros!: Passageiros;
-
-  idaData!: string;
-
+  // dadosPassageiros!: Passageiros;
 
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private service: ApiService
+    private service: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.buscaForm = this.formBuilder.group({
-      somenteida: [],
-      origemControl: [],
-      destinoControl: [],
-      idaData: [],
-      voltaData: []
+      somenteida: [null],
+      origem: [null],
+      destino: [null],
+      dataIda: [null],
+      dataVolta: [null],
+      pagina: [1],
+      porPagina:[5]
     })
     this.getEstados();
-    this.estadosFiltrados = this.buscaForm.get('origemControl')?.valueChanges.pipe(
+    this.estadosFiltrados = this.buscaForm.get('origem')?.valueChanges.pipe(
       startWith(''),
       map(value => this.filtrarEstados(value))
     )
-    this.estadosFiltradosDestino = this.buscaForm.get('destinoControl')?.valueChanges.pipe(
+    this.estadosFiltradosDestino = this.buscaForm.get('destino')?.valueChanges.pipe(
       startWith(''),
       map(value => this.filtrarEstados(value))
     )
-    this.getData();
   }
 
   openDialog() {
@@ -74,19 +75,8 @@ export class FormBuscaComponent implements OnInit {
   }
 
   buscar() {
-    console.log(this.buscaForm.value);
-    // const search = this.transformarFormsEmString();
-    // console.log(this.dadosPassageiros);
-    // const search = ''
-    const dadosParaBusca = this.getData();
-    this.service.buscarPassagens(dadosParaBusca).subscribe(res => console.log(res))
-  }
-
-  hidratandoData() {
-    const data = new Date(this.buscaForm.get('idaData')?.value);
-    const novaData = data.toISOString();
-    console.log(novaData);
-    return novaData
+    const formData = this.buscaForm.value;
+    this.router.navigate(['busca'], {queryParams: formData});
   }
 
   getEstados() {
@@ -95,13 +85,12 @@ export class FormBuscaComponent implements OnInit {
         this.estados = data;
       })
   }
-
-  // getIdEstado() {
-  //   const idEncontrado = array
-  //     .filter(obj => obj.nome === nomeProcurado)
-  //     .map(obj => obj.id);
+  // getIdEstado(estado: string){
+  //   const idEstado = this.estados
+  //         .filter(obj => obj.nome === estado )
+  //         .map(obj => obj.id)
+  //   return console.log(idEstado)
   // }
-
 
   filtrarEstados(value: string): Estado[] {
     const valorFiltrado = value.toLowerCase();
@@ -109,23 +98,6 @@ export class FormBuscaComponent implements OnInit {
       estado => estado.nome.toLowerCase().includes(valorFiltrado)
     )
   }
-
-  getData() {
-    let params = new HttpParams();
-
-    params = params.append('dataIda', this.hidratandoData());
-    params = params.append('pagina', 1)
-    params = params.append('porPagina', 5);
-    console.log(params.toString());
-    return params
-  }
-  // transformarFormsEmString(){
-  //   const idaData = this.hidratandoData();
-  //   let search = `?somenteIda=false&passageirosAdultos=${this.adultos}&passageirosCriancas=${this.criancas}&tipo=${this.categoria}&origemId=0&destinoId=1&dataIda=${idaData}&pagina=1&porPagina=5`
-  //   console.log(search);
-
-  //   return search
-  //}
 }
 
 

@@ -25,7 +25,7 @@ export class ApiService {
     return this.http.get<Estado[]>(this.api_url + 'estados');
   }
 
-  buscarPassagens(search: HttpParams) {
+  buscarPassagens(search: {}) {
     return this.http.get<Resultado>(this.api_url + 'passagem/search', {params: search})
   }
 }

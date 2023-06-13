@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/services/api.service';
 import { Depoimentos, Promocoes } from '../../interfaces/types';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -37,6 +38,11 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(): void {
 
   }
+
+  // emitindoDados(ev: FormGroup){
+  //   console.log(ev);
+
+  // }
 }
 
 
