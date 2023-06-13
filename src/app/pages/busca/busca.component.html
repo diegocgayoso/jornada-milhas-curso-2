@@ -21,10 +21,13 @@
           <app-card-recomendacao></app-card-recomendacao>
           <app-card-recomendacao></app-card-recomendacao>
         </div>
-        <div class="cards-passagens">
-          <app-card-passagem>
+        <div class="cards-passagens" *ngFor="let passagem of resultados">
+          <app-card-passagem [infoPassagem]="passagem">
           </app-card-passagem>
         </div>
+        <ng-template #semResultados>
+          Sem passagens no momento.
+        </ng-template>
       </div>
     </div>
   </app-container>

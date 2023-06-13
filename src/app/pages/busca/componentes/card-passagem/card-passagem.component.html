@@ -1,6 +1,14 @@
 <div class="card-passagem d-flex">
   <div class="detalhes-rumo">
-    <p class="title-passagem">Ida e Volta</p>
+    <div *ngIf="infoPassagem.dataVolta == null; else idaevolta">
+
+      <p class="title-passagem" >Somente ida</p>
+    </div>
+    <ng-template #idaevolta>
+      <p class="title-passagem" >Ida e Volta</p>
+    </ng-template>
+
+
     <mat-divider></mat-divider>
     <div class="trajeto d-flex">
       <div class="infos-trajeto ">
@@ -8,7 +16,7 @@
           Origem
         </p>
         <p class="box-roxo f-sz-1">
-          Rio de janeiro(RJ)
+          {{infoPassagem.origem.nome}}
         </p>
       </div>
       <div class="infos-trajeto ">
@@ -16,7 +24,7 @@
           Destino
         </p>
         <p class="box-roxo f-sz-1">
-          Belo horizonte(MG)
+          {{infoPassagem.destino.nome}}
         </p>
       </div>
     </div>
@@ -24,25 +32,25 @@
     <div class="datas d-flex">
       <div class="data-content">
         <p class="title-infos  f-we-600">Ida</p>
-        <p class="box-roxo f-sz-1">12/02</p>
+        <p class="box-roxo f-sz-1">{{infoPassagem.dataIda | date: 'dd/MM/yyyy' }}</p>
       </div>
       <div>
         <p class="title-infos  f-we-600">Volta</p>
         <p class="box-roxo f-sz-1">
-          15/04
+          {{infoPassagem.dataVolta | date: 'dd/MM/yyyy'}}
         </p>
       </div>
     </div>
   </div>
   <div class="detalhes-preco">
-    <p class="preco box-roxo">R$500</p>
+    <p class="preco box-roxo">R${{ infoPassagem.taxaEmbarque + infoPassagem.precoIda }}</p>
     <div>
       <div class="d-flex flex-s-between">
         <p>
           1 adulto, econômica
         </p>
         <p>
-          R$ 420
+          R$ {{ infoPassagem.precoIda }}
         </p>
       </div>
       <div class="d-flex flex-s-between">
@@ -50,7 +58,7 @@
           Taxa de embarque
         </p>
         <p>
-          R$ 60
+          R$ {{ infoPassagem.taxaEmbarque }}
         </p>
       </div>
     </div>
@@ -61,7 +69,7 @@
         Total
       </p>
       <p class="f-we-600 f-sz-2">
-        R$ 500
+        R$ {{ infoPassagem.taxaEmbarque + infoPassagem.precoIda }}
       </p>
     </div>
     <div class="pagamento d-flex flex-s-between">

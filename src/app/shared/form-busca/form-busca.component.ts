@@ -20,6 +20,7 @@ export class FormBuscaComponent implements OnInit {
   estados: Estado[] = [];
   estadosFiltrados!: Observable<Estado[]> | undefined;
   estadosFiltradosDestino!: Observable<Estado[]> | undefined;
+  opcoesViagem!: any[];
 
 
   adultos!: number;
@@ -54,6 +55,8 @@ export class FormBuscaComponent implements OnInit {
       startWith(''),
       map(value => this.filtrarEstados(value))
     )
+
+    this.opcoesViagem = this.getOpcoesViagem();
   }
 
   openDialog() {
@@ -85,18 +88,19 @@ export class FormBuscaComponent implements OnInit {
         this.estados = data;
       })
   }
-  // getIdEstado(estado: string){
-  //   const idEstado = this.estados
-  //         .filter(obj => obj.nome === estado )
-  //         .map(obj => obj.id)
-  //   return console.log(idEstado)
-  // }
 
   filtrarEstados(value: string): Estado[] {
     const valorFiltrado = value.toLowerCase();
     return this.estados.filter(
       estado => estado.nome.toLowerCase().includes(valorFiltrado)
     )
+  }
+
+  getOpcoesViagem() {
+    return [
+      {valor: true, desc: 'Somente ida'},
+      {valor: false, desc: 'Ida e Volta'}
+    ]
   }
 }
 

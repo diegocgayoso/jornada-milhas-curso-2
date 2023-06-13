@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+import { Passagem } from 'src/app/interfaces/types';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BuscaComponent implements OnInit {
 
+  resultados! : Passagem[];
   constructor(
     private route: ActivatedRoute,
     private service: ApiService
@@ -19,7 +21,10 @@ export class BuscaComponent implements OnInit {
       params => {
         console.log(params);
         this.service.buscarPassagens(params).subscribe(
-          resultado => console.log(resultado)
+          resultado => {
+            this.resultados = resultado.resultado
+            console.log(this.resultados);
+          }
         )
       }
     )

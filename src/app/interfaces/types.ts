@@ -37,7 +37,7 @@ export interface Resultado {
   paginaAtual:  number;
   ultimaPagina: number;
   total:        number;
-  resultado:    Resultado[];
+  resultado:    Passagem[];
 }
 
 export interface Passagem {
