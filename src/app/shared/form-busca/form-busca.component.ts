@@ -27,7 +27,12 @@ export class FormBuscaComponent implements OnInit {
   criancas!: number;
   bebes!: number;
   categoria!: string;
-  // dadosPassageiros!: Passageiros;
+  dadosPassageiros: Passageiros = {
+    adultos: 0,
+    criancas: 0,
+    bebes: 0,
+    categoria: 'Econômica'
+  };
 
   constructor(
     public dialog: MatDialog,
@@ -59,21 +64,19 @@ export class FormBuscaComponent implements OnInit {
     this.opcoesViagem = this.getOpcoesViagem();
   }
 
-  openDialog() {
+  addPassageiros() {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '50%',
-      data: {
-        adultos: this.adultos,
-        criancas: this.criancas,
-        bebes: this.bebes,
-        categoria: this.categoria
-      }
+      data: this.dadosPassageiros
     })
     dialogRef.afterClosed().subscribe(result => {
-      this.adultos = result.adultos
-      this.criancas = result.criancas
-      this.bebes = result.bebes
-      this.categoria = result.categoria
+      // this.adultos = result.adultos
+      // this.criancas = result.criancas
+      // this.bebes = result.bebes
+      // this.categoria = result.categoria
+      this.dadosPassageiros = result;
+      console.log(this.dadosPassageiros);
+
     })
   }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Passageiros } from 'src/app/interfaces/types';
 
@@ -8,26 +8,29 @@ import { Passageiros } from 'src/app/interfaces/types';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
-  passageirosAdultos: number = 0;
-  passageirosCriancas: number = 0;
-  passageirosBebes: number = 0;
-  categoria: string = 'economica';
-
-  @Output() dadosPassageiros = new EventEmitter();
+  passageirosAdultos!: number;
+  passageirosCriancas!: number;
+  passageirosBebes!: number;
+  categoria!: string;
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Passageiros
   ){}
 
+  ngOnInit(): void {
+    console.log(this.data)
+  }
+
   passageiros: Passageiros = {
-    adultos: this.passageirosAdultos,
-    criancas: this.passageirosCriancas,
-    bebes: this.passageirosBebes,
-    categoria: this.categoria,
+    adultos: 0,
+    criancas: 0,
+    bebes: 0,
+    categoria: 'Econômica'
   };
 
   quantidadeAdultos(ev: number) {
+    // this.log(ev)
     this.passageiros.adultos = ev;
   }
 
@@ -39,11 +42,20 @@ export class ModalComponent {
     this.passageiros.bebes = ev;
   }
 
-  mandandoDadosPassageiro() {
-    this.dadosPassageiros.emit(this.passageiros);
-  }
+  // mandandoDadosPassageiro() {
+  //   this.dadosPassageiros.emit(this.passageiros);
+  // }
 
   salvarDadosPassageiros(){
+    // console.log(this.passageiros);
     this.dialogRef.close(this.passageiros);
+  }
+
+  log(valor: any){
+    console.log('Passageiro',valor)
+  }
+
+  onClick(ev: any){
+    this.passageiros.categoria = ev.value
   }
 }

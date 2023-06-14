@@ -1,15 +1,15 @@
 <div>
   <button mat-mini-fab class="decrementar" (click)="decrementar()" operacao="decrementar">
     <img
-      [src]="operacao === 'incrementar' ? 'assets/icones/add_circle.png' : 'assets/icones/do_not_disturb_on.png'"
-      [alt]="operacao === 'incrementar' ? 'Ícone do operador de adição' : 'Ícone do operador de subtração'">
+      src="assets/icones/do_not_disturb_on.png"
+      alt="Ícone do operador de subtração">
   </button>
   <span>{{valor}}</span>
 
   <button mat-mini-fab class="incrementar" (click)="incrementar()" operacao="incrementar">
     <img
-      [src]="operacao === 'incrementar' ? 'assets/icones/add_circle.png' : 'assets/icones/do_not_disturb_on.png'"
-      [alt]="operacao === 'incrementar' ? 'Ícone do operador de adição' : 'Ícone do operador de subtração'">
+      src="assets/icones/add_circle.png"
+      alt="Ícone do operador de adição">
   </button>
 </div>
 

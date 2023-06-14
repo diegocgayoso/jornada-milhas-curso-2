@@ -6,11 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./botao-controle.component.scss']
 })
 export class BotaoControleComponent {
-  @Input() operacao: 'incrementar' | 'decrementar' = "incrementar";
-  @Input() src = '';
-  @Input() alt = '';
-  valor = 0;
-  @Output() valorPassagiero = new EventEmitter();
+  @Input()  valor: number = 0;
+  @Output() valorPassageiro = new EventEmitter();
 
   incrementar() {
     if (this.valor >= 0 && this.valor < 10) {
@@ -18,13 +15,15 @@ export class BotaoControleComponent {
       this.emitir();
     }
   }
+
   decrementar() {
     if (this.valor > 0 && this.valor <= 10) {
       this.valor--;
       this.emitir();
     }
   }
+
   emitir() {
-    this.valorPassagiero.emit(this.valor);
+    this.valorPassageiro.emit(this.valor);
   }
 }
