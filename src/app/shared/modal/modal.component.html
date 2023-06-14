@@ -28,7 +28,7 @@
       <p><strong>Categoria</strong></p>
       <mat-chip-listbox aria-label="Seleção de passagens" (change)="onClick($event)">
         <mat-chip-option #economica value="Econômica" [selected]="data.categoria == economica.value" >Econômica</mat-chip-option>
-        <mat-chip-option #executiva value="Executiva" [selected]="data.categoria == executiva.value">Executiva</mat-chip-option>
+        <mat-chip-option #executiva value="Executiva" [selected]="data.categoria == executiva.value" >Executiva</mat-chip-option>
       </mat-chip-listbox>
     </div>
   </div>

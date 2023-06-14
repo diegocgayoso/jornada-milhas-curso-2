@@ -70,13 +70,11 @@ export class FormBuscaComponent implements OnInit {
       data: this.dadosPassageiros
     })
     dialogRef.afterClosed().subscribe(result => {
-      // this.adultos = result.adultos
-      // this.criancas = result.criancas
-      // this.bebes = result.bebes
-      // this.categoria = result.categoria
-      this.dadosPassageiros = result;
-      console.log(this.dadosPassageiros);
-
+      if(result === undefined){
+        this.dadosPassageiros = this.dadosPassageiros;
+      }else{
+        this.dadosPassageiros = result;
+      }
     })
   }
 
